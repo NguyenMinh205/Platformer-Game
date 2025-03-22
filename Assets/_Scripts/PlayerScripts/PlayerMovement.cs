@@ -9,10 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(float direction, float moveSpeed)
     {
-        if (direction != 0)
-        {
-            Flip(direction);
-        }
+        if (Mathf.Abs(direction) > 0.01f) Flip(direction);
         rb.velocity = new Vector2(direction * moveSpeed, rb.velocity.y);
     }
 
@@ -25,5 +22,5 @@ public class PlayerMovement : MonoBehaviour
     public void Jump(float jumpForce)
     {
         rb.velocity = Vector2.up * jumpForce * Mathf.Sign(rb.gravityScale);
-    }
+    } 
 }
