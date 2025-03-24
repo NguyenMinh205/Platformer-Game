@@ -10,9 +10,8 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private Collider2D collider2D;
     [SerializeField] private float moveSpeed, jumpForce, extraHeight;
     private float horizontal;
-    private bool isJump;
     private bool canDoubleJump;
-
+    private bool isGrounded;
 
     [Space]
     [Header("Animation")]
@@ -28,29 +27,36 @@ public class PlayerController : Singleton<PlayerController>
         horizontal = Input.GetAxisRaw("Horizontal");
         playerMovement.Move(horizontal, moveSpeed);
         playerAnim.PlayAnimRun(horizontal);
-        playerAnim.Animator.SetFloat("yVelocity", playerMovement.Rb.velocity.y);
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
+        playerAnim.PlayAnimJumpAndFall(playerMovement.Rb.velocity.y);
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
-            if (CheckGround())
+            if (isGrounded)
             {
                 playerMovement.Jump(jumpForce);
-                playerAnim.PlayAnimJump(true);
-                isJump = true;
-            }
-            else if (!CheckGround() && isJump)
-            {
+                playerAnim.Animator.SetBool("IsGrounded", false);
                 canDoubleJump = true;
-            }    
-            if (canDoubleJump)
+                isGrounded = false;
+            }
+            else if (canDoubleJump)
             {
                 playerMovement.Jump(jumpForce);
                 playerAnim.PlayAnimDoubleJump();
                 canDoubleJump = false;
-                isJump = false;
-            }   
-        }    
+            }
+        }
     }
 
+    private void FixedUpdate()
+    {
+        isGrounded = CheckGround();
+
+        if (isGrounded)
+        {
+            playerAnim.Animator.SetBool("IsGrounded", true);
+            playerAnim.Animator.SetBool("DoubleJump", false);
+        }
+    }
 
     private bool CheckGround()
     {
