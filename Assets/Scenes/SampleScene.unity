@@ -528,7 +528,7 @@ MonoBehaviour:
   collider2D: {fileID: 1090115828}
   moveSpeed: 5
   jumpForce: 7
-  extraHeight: 0.5
+  extraHeight: 0.025
   playerAnim: {fileID: 1090115835}
   groundLayer:
     serializedVersion: 2
