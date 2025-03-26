@@ -8,8 +8,9 @@ public class FruitController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            ObserverManager<GameEvent>.PostEvent(GameEvent.FruitCollected, this);
+            GameManager.Instance.AnimController.OnFruitCollected(this.gameObject);
             this.gameObject.SetActive(false);
+            ObserverManager<GameEvent>.PostEvent(GameEvent.FruitCollected, this);
         }
     }
 }

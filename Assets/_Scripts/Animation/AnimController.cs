@@ -5,35 +5,41 @@ using UnityEngine;
 public class AnimController : MonoBehaviour
 {
     [SerializeField] private Transform objPool;
-    [SerializeField] private Animator collectAnim;
+    [SerializeField] private GameObject collectAnim;
     [SerializeField] private Animator flagAnim;
 
     private void Start()
     {
-        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.FruitCollected, OnFruitCollected);
         ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, CollectAllFruits);
     }
 
-    private void OnFruitCollected(object param)
+    public void OnFruitCollected(GameObject fruit)
     {
-        StartCoroutine(CollectAnim());
+        StartCoroutine(CollectAnim(fruit));
     }    
 
-    private void CollectAllFruits(object param)
+    public void CollectAllFruits(object param)
     {
+        StartCoroutine(FlagWinAppear());
+    }    
+
+    private IEnumerator CollectAnim(GameObject fruit)
+    {
+        PoolingManager.Spawn(collectAnim, fruit.transform.position, Quaternion.identity, objPool);
+        yield return new WaitForSeconds(2f);
+        PoolingManager.Despawn(collectAnim);
+    }
+
+    private IEnumerator FlagWinAppear()
+    {
+        flagAnim.SetBool("AppearFlag", true);
+        yield return new WaitForSeconds(1.275f);
+        flagAnim.SetBool("AppearFlag", false);
         flagAnim.SetBool("Win", true);
-    }    
-
-    private IEnumerator CollectAnim()
-    {
-        PoolingManager.Spawn(collectAnim, this.transform.position, Quaternion.identity, objPool);
-        yield return new WaitForSeconds(0.5f);
-        PoolingManager.Despawn(collectAnim.gameObject);
     }
 
     private void OnDestroy()
     {
-        ObserverManager<GameEvent>.RemoveAddListener(GameEvent.FruitCollected, OnFruitCollected);
         ObserverManager<GameEvent>.RemoveAddListener(GameEvent.AllFruitsCollected, CollectAllFruits);
     }
 }
