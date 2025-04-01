@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5121667160305645655}
   - component: {fileID: 7167985455628096119}
   - component: {fileID: -1071115880213124989}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Melon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Win
+  - Trap
   layers:
   - Default
   - TransparentFX
@@ -13,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Bullet
+  - Trap
+  - Fruit
   - Ground
-  - 
   - 
   - 
   - 
