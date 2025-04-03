@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2654757788338326238}
   - component: {fileID: 2475580137478025209}
   - component: {fileID: 5435100421899613632}
+  - component: {fileID: 6496148088280757072}
   m_Layer: 9
   m_Name: PlantShooting
   m_TagString: Trap
@@ -98,5 +99,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 0}
-  timeDelay: 1
+  timeDelay: 2
   timeStart: 0
+  animator: {fileID: 6496148088280757072}
+--- !u!95 &6496148088280757072
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7245058628827594131}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 928e527b1c0820d4f9aaf3a91cf3e740, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

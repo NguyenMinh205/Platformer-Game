@@ -20,7 +20,7 @@ public static class ObserverManager<T> where T : Enum
         }
         if (!_boardObserver.TryAdd(eventID, callback))
         {
-            _boardObserver.Add(eventID, callback);
+            _boardObserver[eventID] += callback;
             return;
         }
     }

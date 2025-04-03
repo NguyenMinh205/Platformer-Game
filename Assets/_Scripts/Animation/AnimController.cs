@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class AnimController : MonoBehaviour
 {
-    [SerializeField] private Transform objPool;
+    [Space]
+    [Header("SourceForInGame")]
+    //[SerializeField] private Transform objPool;
     [SerializeField] private GameObject collectAnim;
     [SerializeField] private Animator flagAnim;
 
     private void Start()
     {
         ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, CollectAllFruits);
+        //ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.InPlaying, StartPlaying);
+        flagAnim = GameObject.FindGameObjectWithTag("Win").GetComponent<Animator>();
     }
+
+    private void OnEnable()
+    {
+        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, CollectAllFruits);
+        //ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.InPlaying, StartPlaying);
+    }
+
+    public void StartPlaying(object param)
+    {
+        flagAnim = GameObject.FindGameObjectWithTag("Win").GetComponent<Animator>();
+    }    
 
     public void OnFruitCollected(GameObject fruit)
     {
@@ -25,9 +40,9 @@ public class AnimController : MonoBehaviour
 
     private IEnumerator CollectAnim(GameObject fruit)
     {
-        PoolingManager.Spawn(collectAnim, fruit.transform.position, Quaternion.identity, objPool);
-        yield return new WaitForSeconds(2f);
-        PoolingManager.Despawn(collectAnim);
+        GameObject newCollectAnim = PoolingManager.Spawn(collectAnim, fruit.transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(1f);
+        PoolingManager.Despawn(newCollectAnim);
     }
 
     private IEnumerator FlagWinAppear()
@@ -41,5 +56,6 @@ public class AnimController : MonoBehaviour
     private void OnDestroy()
     {
         ObserverManager<GameEvent>.RemoveAddListener(GameEvent.AllFruitsCollected, CollectAllFruits);
+        ObserverManager<GameEvent>.RemoveAddListener(GameEvent.InPlaying, StartPlaying);
     }
 }

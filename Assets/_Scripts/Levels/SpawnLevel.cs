@@ -9,7 +9,7 @@ public class SpawnLevel : MonoBehaviour
 
     public void SpawnNewLevel(int index)
     {
-        if(index > levels.Count) return;
+        if (index > levels.Count || index <= 0) return;
         DestroyMap();
         currentLevel = Instantiate(levels[index - 1], transform.position, Quaternion.identity, transform);
     }

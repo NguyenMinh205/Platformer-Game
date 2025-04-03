@@ -26,6 +26,12 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private AudioClip playerMoving;
     [SerializeField] private AudioClip playerGetItem;
 
+    protected override void Awake()
+    {
+        base.KeepAlive(false);
+        base.Awake();
+    }
+
     void Start()
     {
         SetMuteSounds();

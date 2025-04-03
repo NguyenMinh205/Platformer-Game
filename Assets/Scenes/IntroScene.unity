@@ -1743,6 +1743,7 @@ GameObject:
   - component: {fileID: 1489569444}
   - component: {fileID: 1489569443}
   - component: {fileID: 1489569442}
+  - component: {fileID: 1489569445}
   m_Layer: 5
   m_Name: QuitGameBtn
   m_TagString: Untagged
@@ -1865,6 +1866,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489569440}
   m_CullTransparentMesh: 1
+--- !u!114 &1489569445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489569440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a4f945353342014f8c194958d66280e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleEase: 27
+  scaleOnHover: 1.25
+  scaleTransition: 0.25
+  hoverPunchAngle: 10
+  hoverTransition: 0.25
+  button: {fileID: 0}
+  level: 0
+  Lock: 1
+  ImageLock: {fileID: 0}
 --- !u!1 &1526166412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1877,6 +1899,7 @@ GameObject:
   - component: {fileID: 1526166416}
   - component: {fileID: 1526166415}
   - component: {fileID: 1526166414}
+  - component: {fileID: 1526166417}
   m_Layer: 5
   m_Name: PlayGameBtn
   m_TagString: Untagged
@@ -1999,6 +2022,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526166412}
   m_CullTransparentMesh: 1
+--- !u!114 &1526166417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526166412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a4f945353342014f8c194958d66280e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleEase: 27
+  scaleOnHover: 1.25
+  scaleTransition: 0.25
+  hoverPunchAngle: 10
+  hoverTransition: 0.25
+  button: {fileID: 0}
+  level: 0
+  Lock: 1
+  ImageLock: {fileID: 0}
 --- !u!1 &1574758285
 GameObject:
   m_ObjectHideFlags: 0

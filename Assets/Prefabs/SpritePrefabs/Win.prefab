@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2130793017436404975}
   - component: {fileID: 6966994186529243500}
   - component: {fileID: 5012925439124585465}
+  - component: {fileID: 765904099922118897}
   m_Layer: 0
   m_Name: Win
   m_TagString: Win
@@ -152,3 +153,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &765904099922118897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563631777600922451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426f83b0f42a1964090ab5c167b6cddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

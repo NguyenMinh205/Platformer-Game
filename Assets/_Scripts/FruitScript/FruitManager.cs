@@ -13,6 +13,12 @@ public class FruitManager : MonoBehaviour
         ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.FruitCollected, OnFruitCollected);
     }
 
+    //private void OnEnable()
+    //{
+    //    totalFruits = FindObjectsOfType<FruitController>().Length;
+    //    ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.FruitCollected, OnFruitCollected);
+    //}
+
     private void OnFruitCollected(object param)
     {
         collectedFruits++;

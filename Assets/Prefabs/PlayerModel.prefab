@@ -182,7 +182,7 @@ MonoBehaviour:
   playerAnim: {fileID: 2881988756630285377}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 2048
 --- !u!114 &5122182130385440615
 MonoBehaviour:
   m_ObjectHideFlags: 0

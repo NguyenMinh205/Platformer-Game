@@ -56,7 +56,7 @@ public class UISetting : MonoBehaviour
         AudioManager.Instance.SetMuteSounds();
     }
 
-    public void DisplaySetting(bool isOn)
+    public virtual void DisplaySetting(bool isOn)
     {
         dime.gameObject.SetActive(isOn);
         popup.gameObject.SetActive(isOn);
@@ -66,21 +66,26 @@ public class UISetting : MonoBehaviour
     {
         AudioManager.Instance.PlaySoundClickButton();
         DisplaySetting(true);
-        //if (GameController.Instance.State == GameState.Playing)
-        //{
-        //    replay.gameObject.SetActive(true);
-        //    home.gameObject.SetActive(true);
-        //}
-        //else
-        //{
-        //    replay.gameObject.SetActive(false);
-        //    home.gameObject.SetActive(false);
-        //}
+        if (GameManager.Instance.State == StateGame.Playing)
+        {
+            GameManager.Instance.State = StateGame.Pause;
+            replay.gameObject.SetActive(true);
+            home.gameObject.SetActive(true);
+        }
+        else
+        {
+            replay.gameObject.SetActive(false);
+            home.gameObject.SetActive(false);
+        }
     }
 
     public void OnButtonCloseClick()
     {
         AudioManager.Instance.PlaySoundClickButton();
         DisplaySetting(false);
+        if (GameManager.Instance.State == StateGame.Pause)
+        {
+            GameManager.Instance.State = StateGame.Playing;
+        }
     }
 }

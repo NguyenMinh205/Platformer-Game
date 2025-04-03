@@ -7,7 +7,9 @@ public class CheckLose : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Lose");
-        SceneManager.LoadScene(0);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GameManager.Instance.GameOver();
+        }    
     }
 }
