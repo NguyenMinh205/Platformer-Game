@@ -5,6 +5,7 @@ using UnityEngine;
 public enum GameEvent
 {
     InPlaying,
+    StopPlaying, 
     FruitCollected,
     AllFruitsCollected
 }

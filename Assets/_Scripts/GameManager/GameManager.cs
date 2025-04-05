@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,8 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private AnimController animController;
     [SerializeField] private GameObject sceneChoiceLevel;
-    [SerializeField] private GameObject winLosePopup;
+    [SerializeField] private UIWinLose winLosePopup;
+    [SerializeField] private UISetting settingPopup;
     public AnimController AnimController => animController;
 
     private StateGame state = StateGame.WaitingChoiceLevel;
@@ -22,22 +24,29 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private SpawnLevel spawnLevel;
     public SpawnLevel SpawnLevel => spawnLevel;
 
-    private int curLevel = 1;    
+    private int curLevel = 1;
 
     public void PlayGame(int level)
     {
         AudioManager.Instance.PlaySoundClickButton();
         if (level == 0) return;
-        curLevel = level;
-        spawnLevel.SpawnNewLevel(level);
-        state = StateGame.Playing;
-        AudioManager.Instance.StopMusic();
-        DOVirtual.DelayedCall(1.5f, delegate
+
+        StartCoroutine(DoSceneTransition(() =>
         {
-            AudioManager.Instance.PlayMusicInGame();
-        });
-        //ObserverManager<GameEvent>.PostEvent(GameEvent.InPlaying);
-    }    
+            curLevel = level;
+            DisableSceneChoiceLevel(level);
+            state = StateGame.Playing;
+            AudioManager.Instance.StopMusic();
+
+            DOVirtual.DelayedCall(1f, delegate
+            {
+                AudioManager.Instance.PlayMusicInGame();
+            });
+
+            ObserverManager<GameEvent>.PostEvent(GameEvent.InPlaying);
+        }));
+    }
+
 
     public void Win()
     {
@@ -45,10 +54,12 @@ public class GameManager : Singleton<GameManager>
         state = StateGame.Win;
         AudioManager.Instance.StopMusic();
         curLevel += 1;
+        MapLevelManager.Instance.ListBtn[curLevel - 1].IsLock = true;
 
         DOVirtual.DelayedCall(0.5f, () =>
         {
-            winLosePopup.SetActive(true);
+            winLosePopup.DisplayPopupWinLose(true);
+            winLosePopup.Title.text = "YOU WIN";
         });
     }    
 
@@ -59,6 +70,11 @@ public class GameManager : Singleton<GameManager>
         {
             curLevel -= 1;
             state = StateGame.Playing;
+            winLosePopup.DisplayPopupWinLose(false);
+        }
+        else
+        {
+            settingPopup.DisplaySetting(false);
         }
         spawnLevel.SpawnNewLevel(curLevel);
     }
@@ -66,26 +82,40 @@ public class GameManager : Singleton<GameManager>
     public void BackHome()
     {
         AudioManager.Instance.PlaySoundClickButton();
-        if (state == StateGame.WaitingChoiceLevel)
+
+        StartCoroutine(DoSceneTransition(() =>
         {
-            SceneManager.LoadScene(0);
-        }
-        else 
-        {
-            EnableSceneChoiceLevel();
-        }
-    }   
+            if (state == StateGame.Win || state == StateGame.Lose)
+            {
+                winLosePopup.DisplayPopupWinLose(false);
+            }
+            else
+            {
+                settingPopup.DisplaySetting(false);
+            }
+            if (state == StateGame.WaitingChoiceLevel)
+            {
+                SceneManager.LoadScene(0);
+            }
+            else
+            {
+                EnableSceneChoiceLevel();
+            }
+        }));
+    }
+
 
     public void EnableSceneChoiceLevel()
     {
         sceneChoiceLevel.SetActive(true);
         state = StateGame.WaitingChoiceLevel;
         AudioManager.Instance.StopMusic();
-        DOVirtual.DelayedCall(1.5f, delegate
+        DOVirtual.DelayedCall(1f, delegate
         {
             AudioManager.Instance.PlayMusicBG();
         });
         spawnLevel.DestroyMap();
+        ObserverManager<GameEvent>.PostEvent(GameEvent.StopPlaying);
     }
 
     public void DisableSceneChoiceLevel(int level)
@@ -97,10 +127,23 @@ public class GameManager : Singleton<GameManager>
     public void NextLevel()
     {
         AudioManager.Instance.PlaySoundClickButton();
-        curLevel++;
-        spawnLevel.SpawnNewLevel(curLevel);
-        AudioManager.Instance.PlayMusicInGame();
-    }    
+
+        StartCoroutine(DoSceneTransition(() =>
+        {
+            curLevel++;
+            winLosePopup.DisplayPopupWinLose(false);
+            if (curLevel >= MapLevelManager.Instance.ListBtn.Count)
+            {
+                EnableSceneChoiceLevel();
+            }
+            else
+            {
+                spawnLevel.SpawnNewLevel(curLevel);
+                AudioManager.Instance.PlayMusicInGame();
+            }
+        }));
+    }
+
 
     public void GameOver()
     {
@@ -109,7 +152,23 @@ public class GameManager : Singleton<GameManager>
         AudioManager.Instance.StopMusic();
         DOVirtual.DelayedCall(0.5f, () =>
         {
-            winLosePopup.SetActive(true);
+            winLosePopup.DisplayPopupWinLose(true);
+            winLosePopup.Title.text = "YOU LOSE";
         });
-    }    
+    }
+
+    public IEnumerator DoSceneTransition(Action onMidAction)
+    {
+        SceneTransitionAnim.Instance.StartTransition();
+        SceneTransitionAnim.Instance.FadeInTransition();
+        yield return new WaitForSeconds(1f);
+
+        onMidAction?.Invoke();
+
+        yield return new WaitForSeconds(0.2f);
+
+        SceneTransitionAnim.Instance.FadeOutTransition();
+        SceneTransitionAnim.Instance.EndTransition();
+    }
+
 }

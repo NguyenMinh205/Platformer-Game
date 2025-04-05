@@ -32,7 +32,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         get => PlayerPrefs.GetInt("Level_" + level, 0) == 1;
     }
 
-    public GameObject ImageLock;
 
     private void Start()
     {
@@ -47,12 +46,6 @@ public class ButtonController : MonoBehaviour, IPointerEnterHandler, IPointerExi
         if (!Lock)
         {
             IsLock = true;
-            ImageLock.SetActive(false);
-        }
-
-        if (IsLock)
-        {
-            ImageLock.SetActive(false);
         }
     }
 

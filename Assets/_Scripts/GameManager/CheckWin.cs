@@ -10,12 +10,10 @@ public class CheckWin : MonoBehaviour
         ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, SetWin);
     }
 
-    
-
-    //private void OnEnable()
-    //{
-    //    ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, SetWin);
-    //}
+    private void OnEnable()
+    {
+        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, SetWin);
+    }
 
     public void SetWin(object param)
     {
@@ -29,7 +27,7 @@ public class CheckWin : MonoBehaviour
             if (collision.gameObject.CompareTag("Player"))
             {
                 Debug.Log("Win");
-                GameManager.Instance.Win();
+                GameManager.Instance.Win ();
             }    
         }   
     }

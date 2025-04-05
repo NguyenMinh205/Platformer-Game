@@ -32,8 +32,11 @@ public class LoadingSlider : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene(1);
-        GameManager.Instance.State = StateGame.WaitingChoiceLevel;
+        StartCoroutine(GameManager.Instance.DoSceneTransition(() =>
+        {
+            SceneManager.LoadScene(1);
+            GameManager.Instance.State = StateGame.WaitingChoiceLevel;
+        }));
     }
 
     public void QuitGame()

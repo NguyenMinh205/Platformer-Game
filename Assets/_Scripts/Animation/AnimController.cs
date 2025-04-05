@@ -14,18 +14,24 @@ public class AnimController : MonoBehaviour
     {
         ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, CollectAllFruits);
         //ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.InPlaying, StartPlaying);
-        flagAnim = GameObject.FindGameObjectWithTag("Win").GetComponent<Animator>();
+        //ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.StopPlaying, StopPlaying);
     }
 
     private void OnEnable()
     {
         ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, CollectAllFruits);
-        //ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.InPlaying, StartPlaying);
+        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.InPlaying, StartPlaying);
+        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.StopPlaying, StopPlaying);
     }
 
     public void StartPlaying(object param)
     {
         flagAnim = GameObject.FindGameObjectWithTag("Win").GetComponent<Animator>();
+    }  
+    
+    public void StopPlaying(object param)
+    {
+        flagAnim = null;
     }    
 
     public void OnFruitCollected(GameObject fruit)
@@ -57,5 +63,6 @@ public class AnimController : MonoBehaviour
     {
         ObserverManager<GameEvent>.RemoveAddListener(GameEvent.AllFruitsCollected, CollectAllFruits);
         ObserverManager<GameEvent>.RemoveAddListener(GameEvent.InPlaying, StartPlaying);
+        ObserverManager<GameEvent>.RemoveAddListener(GameEvent.InPlaying, StopPlaying);
     }
 }
