@@ -13,25 +13,38 @@ public class AnimController : MonoBehaviour
     private void Start()
     {
         ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, CollectAllFruits);
-        //ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.InPlaying, StartPlaying);
-        //ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.StopPlaying, StopPlaying);
-    }
-
-    private void OnEnable()
-    {
-        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, CollectAllFruits);
-        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.InPlaying, StartPlaying);
+        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.StartPlaying, StartPlaying);
         ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.StopPlaying, StopPlaying);
     }
 
+    //private void OnEnable()
+    //{
+    //    ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, CollectAllFruits);
+    //    ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.StartPlaying, StartPlaying);
+    //    ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.StopPlaying, StopPlaying);
+    //}
+
     public void StartPlaying(object param)
     {
-        flagAnim = GameObject.FindGameObjectWithTag("Win").GetComponent<Animator>();
-    }  
-    
+        StartCoroutine(WaitAndFindFlag());
+    }
+
+    private IEnumerator WaitAndFindFlag()
+    {
+        yield return new WaitForEndOfFrame(); 
+        flagAnim = GameObject.FindGameObjectWithTag("Win")?.GetComponent<Animator>();
+
+        if (flagAnim != null)
+            Debug.Log("yes");
+        else
+            Debug.Log("no");
+    }
+
+
     public void StopPlaying(object param)
     {
         flagAnim = null;
+        Debug.Log("action");
     }    
 
     public void OnFruitCollected(GameObject fruit)
@@ -62,7 +75,7 @@ public class AnimController : MonoBehaviour
     private void OnDestroy()
     {
         ObserverManager<GameEvent>.RemoveAddListener(GameEvent.AllFruitsCollected, CollectAllFruits);
-        ObserverManager<GameEvent>.RemoveAddListener(GameEvent.InPlaying, StartPlaying);
-        ObserverManager<GameEvent>.RemoveAddListener(GameEvent.InPlaying, StopPlaying);
+        ObserverManager<GameEvent>.RemoveAddListener(GameEvent.StartPlaying, StartPlaying);
+        ObserverManager<GameEvent>.RemoveAddListener(GameEvent.StopPlaying, StopPlaying);
     }
 }

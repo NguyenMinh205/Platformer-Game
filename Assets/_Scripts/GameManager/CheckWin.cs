@@ -7,15 +7,22 @@ public class CheckWin : MonoBehaviour
     private bool canWin;
     void Start()
     {
-        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, SetWin);
+        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, SetWinTrue);
+        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.StartPlaying, SetWinFalse);
     }
 
     private void OnEnable()
     {
-        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, SetWin);
+        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.AllFruitsCollected, SetWinTrue);
+        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.StartPlaying, SetWinFalse);
     }
 
-    public void SetWin(object param)
+    public void SetWinTrue(object param)
+    {
+        canWin = true;
+    } 
+    
+    public void SetWinFalse(object param)
     {
         canWin = true;
     }
@@ -34,6 +41,7 @@ public class CheckWin : MonoBehaviour
 
     private void OnDestroy()
     {
-        ObserverManager<GameEvent>.RemoveAddListener(GameEvent.FruitCollected, SetWin);
+        ObserverManager<GameEvent>.RemoveAddListener(GameEvent.FruitCollected, SetWinTrue);
+        ObserverManager<GameEvent>.RemoveAddListener(GameEvent.StartPlaying, SetWinFalse);
     }
 }

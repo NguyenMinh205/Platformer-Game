@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum GameEvent
 {
-    InPlaying,
+    StartPlaying,
     StopPlaying, 
     FruitCollected,
     AllFruitsCollected

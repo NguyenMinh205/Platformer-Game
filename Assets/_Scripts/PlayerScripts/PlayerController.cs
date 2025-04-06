@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : Singleton<PlayerController>
+public class PlayerController : MonoBehaviour
 {
     [Space]
     [Header("Setting movement")]
@@ -24,6 +24,7 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Update()
     {
+        if (GameManager.Instance.State != StateGame.Playing) return;
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))

@@ -31,20 +31,30 @@ public class GameManager : Singleton<GameManager>
         AudioManager.Instance.PlaySoundClickButton();
         if (level == 0) return;
 
-        StartCoroutine(DoSceneTransition(() =>
+        //StartCoroutine(DoSceneTransition(() =>
+        //{
+        //    curLevel = level;
+        //    DisableSceneChoiceLevel(level);
+        //    state = StateGame.Playing;
+        //    AudioManager.Instance.StopMusic();
+
+        //    DOVirtual.DelayedCall(1f, delegate
+        //    {
+        //        AudioManager.Instance.PlayMusicInGame();
+        //    });
+
+        //    ObserverManager<GameEvent>.PostEvent(GameEvent.InPlaying);
+        //}));
+
+        curLevel = level;
+        DisableSceneChoiceLevel(level);
+        state = StateGame.Playing;
+        AudioManager.Instance.StopMusic();
+
+        DOVirtual.DelayedCall(1f, delegate
         {
-            curLevel = level;
-            DisableSceneChoiceLevel(level);
-            state = StateGame.Playing;
-            AudioManager.Instance.StopMusic();
-
-            DOVirtual.DelayedCall(1f, delegate
-            {
-                AudioManager.Instance.PlayMusicInGame();
-            });
-
-            ObserverManager<GameEvent>.PostEvent(GameEvent.InPlaying);
-        }));
+            AudioManager.Instance.PlayMusicInGame();
+        });
     }
 
 
@@ -53,55 +63,73 @@ public class GameManager : Singleton<GameManager>
         AudioManager.Instance.PlaySoundClickButton();
         state = StateGame.Win;
         AudioManager.Instance.StopMusic();
-        curLevel += 1;
-        MapLevelManager.Instance.ListBtn[curLevel - 1].IsLock = true;
+        MapLevelManager.Instance.ListBtn[curLevel].IsLock = true;
 
         DOVirtual.DelayedCall(0.5f, () =>
         {
             winLosePopup.DisplayPopupWinLose(true);
             winLosePopup.Title.text = "YOU WIN";
         });
-    }    
+    }
 
     public void Replay()
     {
         AudioManager.Instance.PlaySoundClickButton();
-        if (state == StateGame.Win)
+
+        if (state == StateGame.Win || state == StateGame.Lose)
         {
-            curLevel -= 1;
-            state = StateGame.Playing;
             winLosePopup.DisplayPopupWinLose(false);
         }
         else
         {
             settingPopup.DisplaySetting(false);
         }
+
+        state = StateGame.Playing;
         spawnLevel.SpawnNewLevel(curLevel);
+        AudioManager.Instance.PlayMusicInGame();
     }
 
     public void BackHome()
     {
         AudioManager.Instance.PlaySoundClickButton();
 
-        StartCoroutine(DoSceneTransition(() =>
+        //StartCoroutine(DoSceneTransition(() =>
+        //{
+        //    if (state == StateGame.Win || state == StateGame.Lose)
+        //    {
+        //        winLosePopup.DisplayPopupWinLose(false);
+        //    }
+        //    else
+        //    {
+        //        settingPopup.DisplaySetting(false);
+        //    }
+        //    if (state == StateGame.WaitingChoiceLevel)
+        //    {
+        //        SceneManager.LoadScene(0);
+        //    }
+        //    else
+        //    {
+        //        EnableSceneChoiceLevel();
+        //    }
+        //}));
+
+        if (state == StateGame.Win || state == StateGame.Lose)
         {
-            if (state == StateGame.Win || state == StateGame.Lose)
-            {
-                winLosePopup.DisplayPopupWinLose(false);
-            }
-            else
-            {
-                settingPopup.DisplaySetting(false);
-            }
-            if (state == StateGame.WaitingChoiceLevel)
-            {
-                SceneManager.LoadScene(0);
-            }
-            else
-            {
-                EnableSceneChoiceLevel();
-            }
-        }));
+            winLosePopup.DisplayPopupWinLose(false);
+        }
+        else
+        {
+            settingPopup.DisplaySetting(false);
+        }
+        if (state == StateGame.WaitingChoiceLevel)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            EnableSceneChoiceLevel();
+        }
     }
 
 
@@ -115,7 +143,6 @@ public class GameManager : Singleton<GameManager>
             AudioManager.Instance.PlayMusicBG();
         });
         spawnLevel.DestroyMap();
-        ObserverManager<GameEvent>.PostEvent(GameEvent.StopPlaying);
     }
 
     public void DisableSceneChoiceLevel(int level)
@@ -128,20 +155,34 @@ public class GameManager : Singleton<GameManager>
     {
         AudioManager.Instance.PlaySoundClickButton();
 
-        StartCoroutine(DoSceneTransition(() =>
+        //StartCoroutine(DoSceneTransition(() =>
+        //{
+        //    curLevel++;
+        //    winLosePopup.DisplayPopupWinLose(false);
+        //    if (curLevel >= MapLevelManager.Instance.ListBtn.Count)
+        //    {
+        //        EnableSceneChoiceLevel();
+        //    }
+        //    else
+        //    {
+        //        spawnLevel.SpawnNewLevel(curLevel);
+        //        AudioManager.Instance.PlayMusicInGame();
+        //    }
+        //}));
+
+        curLevel++;
+        winLosePopup.DisplayPopupWinLose(false);
+
+        if (curLevel >= MapLevelManager.Instance.ListBtn.Count)
         {
-            curLevel++;
-            winLosePopup.DisplayPopupWinLose(false);
-            if (curLevel >= MapLevelManager.Instance.ListBtn.Count)
-            {
-                EnableSceneChoiceLevel();
-            }
-            else
-            {
-                spawnLevel.SpawnNewLevel(curLevel);
-                AudioManager.Instance.PlayMusicInGame();
-            }
-        }));
+            EnableSceneChoiceLevel();
+        }
+        else
+        {
+            state = StateGame.Playing;
+            spawnLevel.SpawnNewLevel(curLevel);
+            AudioManager.Instance.PlayMusicInGame();
+        }
     }
 
 

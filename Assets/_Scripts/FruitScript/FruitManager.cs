@@ -5,19 +5,21 @@ using UnityEngine;
 public class FruitManager : MonoBehaviour
 {
     private int totalFruits;
-    private int collectedFruits = 0;
+    private int collectedFruits;
 
-    private void Start()
-    {
-        totalFruits = FindObjectsOfType<FruitController>().Length;
-        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.FruitCollected, OnFruitCollected);
-    }
-
-    //private void OnEnable()
+    //private void Start()
     //{
     //    totalFruits = FindObjectsOfType<FruitController>().Length;
     //    ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.FruitCollected, OnFruitCollected);
+    //    collectedFruits = 0;
     //}
+
+    private void OnEnable()
+    {
+        totalFruits = FindObjectsOfType<FruitController>().Length;
+        ObserverManager<GameEvent>.AddRegisterEvent(GameEvent.FruitCollected, OnFruitCollected);
+        collectedFruits = 0;
+    }
 
     private void OnFruitCollected(object param)
     {

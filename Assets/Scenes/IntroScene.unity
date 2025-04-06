@@ -398,7 +398,7 @@ SortingGroup:
   m_GameObject: {fileID: 209408847}
   m_Enabled: 1
   m_SortingLayerID: -960255533
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 75
   m_SortAtRoot: 0
 --- !u!114 &209408850
@@ -1133,7 +1133,7 @@ SortingGroup:
   m_GameObject: {fileID: 494966993}
   m_Enabled: 1
   m_SortingLayerID: -960255533
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 50
   m_SortAtRoot: 0
 --- !u!1 &557100335
@@ -2075,10 +2075,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleEase: 27
-  scaleOnHover: 1.25
-  scaleTransition: 0.25
-  hoverPunchAngle: 10
-  hoverTransition: 0.25
+  scaleOnHover: 1.15
+  scaleTransition: 0.2
+  hoverPunchAngle: 7
+  hoverTransition: 0.2
   button: {fileID: 0}
   level: 0
   Lock: 1
@@ -2230,10 +2230,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleEase: 27
-  scaleOnHover: 1.25
-  scaleTransition: 0.25
-  hoverPunchAngle: 10
-  hoverTransition: 0.25
+  scaleOnHover: 1.15
+  scaleTransition: 0.2
+  hoverPunchAngle: 7
+  hoverTransition: 0.2
   button: {fileID: 0}
   level: 0
   Lock: 1

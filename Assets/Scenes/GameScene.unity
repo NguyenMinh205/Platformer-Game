@@ -669,10 +669,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleEase: 30
-  scaleOnHover: 1.25
-  scaleTransition: 0.25
-  hoverPunchAngle: 10
-  hoverTransition: 0.25
+  scaleOnHover: 1.15
+  scaleTransition: 0.2
+  hoverPunchAngle: 7
+  hoverTransition: 0.2
   button: {fileID: 190715090}
   level: 1
   Lock: 0
@@ -754,7 +754,7 @@ SortingGroup:
   m_GameObject: {fileID: 242010132}
   m_Enabled: 1
   m_SortingLayerID: -960255533
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 1000
   m_SortAtRoot: 0
 --- !u!1 &252676647
@@ -1568,7 +1568,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -960255533
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &459362218
@@ -1603,7 +1603,7 @@ SortingGroup:
   m_GameObject: {fileID: 459362214}
   m_Enabled: 1
   m_SortingLayerID: -960255533
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 50
   m_SortAtRoot: 0
 --- !u!1 &519420028
@@ -2273,10 +2273,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleEase: 30
-  scaleOnHover: 1.25
-  scaleTransition: 0.25
-  hoverPunchAngle: 10
-  hoverTransition: 0.25
+  scaleOnHover: 1.15
+  scaleTransition: 0.2
+  hoverPunchAngle: 7
+  hoverTransition: 0.2
   button: {fileID: 621402989}
   level: 6
   Lock: 1
@@ -2613,7 +2613,7 @@ SortingGroup:
   m_GameObject: {fileID: 869566402}
   m_Enabled: 1
   m_SortingLayerID: -960255533
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 100
   m_SortAtRoot: 0
 --- !u!1 &890432460
@@ -2905,10 +2905,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleEase: 30
-  scaleOnHover: 1.25
-  scaleTransition: 0.25
-  hoverPunchAngle: 10
-  hoverTransition: 0.25
+  scaleOnHover: 1.15
+  scaleTransition: 0.2
+  hoverPunchAngle: 7
+  hoverTransition: 0.2
   button: {fileID: 1007770866}
   level: 5
   Lock: 1
@@ -3048,10 +3048,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleEase: 30
-  scaleOnHover: 1.25
-  scaleTransition: 0.25
-  hoverPunchAngle: 10
-  hoverTransition: 0.25
+  scaleOnHover: 1.15
+  scaleTransition: 0.2
+  hoverPunchAngle: 7
+  hoverTransition: 0.2
   button: {fileID: 1018809017}
   level: 2
   Lock: 1
@@ -3535,10 +3535,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleEase: 30
-  scaleOnHover: 1.25
-  scaleTransition: 0.25
-  hoverPunchAngle: 10
-  hoverTransition: 0.25
+  scaleOnHover: 1.15
+  scaleTransition: 0.2
+  hoverPunchAngle: 7
+  hoverTransition: 0.2
   button: {fileID: 1177091962}
   level: 7
   Lock: 1
@@ -3915,7 +3915,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 360, y: -100}
+  m_AnchoredPosition: {x: 540, y: -100}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1378129746
@@ -4466,10 +4466,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleEase: 30
-  scaleOnHover: 1.25
-  scaleTransition: 0.25
-  hoverPunchAngle: 10
-  hoverTransition: 0.25
+  scaleOnHover: 1.15
+  scaleTransition: 0.2
+  hoverPunchAngle: 7
+  hoverTransition: 0.2
   button: {fileID: 1431386983}
   level: 4
   Lock: 1
@@ -5719,7 +5719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1652431416
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5982,7 +5982,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1745064892
 MonoBehaviour:
@@ -6312,7 +6312,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU WIN
+  m_text: YOU LOSE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d7ac4ce1813bfc949827bc76723c7b71, type: 2}
   m_sharedMaterial: {fileID: -3780074643436825114, guid: d7ac4ce1813bfc949827bc76723c7b71, type: 2}
@@ -6525,10 +6525,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleEase: 30
-  scaleOnHover: 1.25
-  scaleTransition: 0.25
-  hoverPunchAngle: 10
-  hoverTransition: 0.25
+  scaleOnHover: 1.15
+  scaleTransition: 0.2
+  hoverPunchAngle: 7
+  hoverTransition: 0.2
   button: {fileID: 2005198718}
   level: 3
   Lock: 1
@@ -6568,7 +6568,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: -100}
+  m_AnchoredPosition: {x: 180, y: -100}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2036427354
@@ -6714,7 +6714,7 @@ SortingGroup:
   m_GameObject: {fileID: 2128461364}
   m_Enabled: 1
   m_SortingLayerID: -960255533
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 75
   m_SortAtRoot: 0
 --- !u!114 &2128461367
