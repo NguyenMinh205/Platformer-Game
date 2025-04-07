@@ -8,7 +8,7 @@ public class SpikeController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.GameOver();
+            GameManager.Instance.GameOver(collision.gameObject);
         }    
     }
 }

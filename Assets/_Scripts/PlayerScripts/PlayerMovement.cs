@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Mathf.Abs(direction) > 0.01f) Flip(direction);
         rb.velocity = new Vector2(direction * moveSpeed, rb.velocity.y);
+        //AudioManager.Instance.PlaySFXMovement();
     }
 
     private void Flip(float direction)
@@ -22,5 +23,6 @@ public class PlayerMovement : MonoBehaviour
     public void Jump(float jumpForce)
     {
         rb.velocity = Vector2.up * jumpForce * Mathf.Sign(rb.gravityScale);
+        AudioManager.Instance.PlaySFXJump();
     } 
 }

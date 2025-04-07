@@ -57,7 +57,7 @@ public class SawController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            GameManager.Instance.GameOver();
+            GameManager.Instance.GameOver(collision.gameObject);
         }
     }
 

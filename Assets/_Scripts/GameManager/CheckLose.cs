@@ -9,7 +9,7 @@ public class CheckLose : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameManager.Instance.GameOver();
+            GameManager.Instance.GameOver(collision.gameObject);
         }    
     }
 }

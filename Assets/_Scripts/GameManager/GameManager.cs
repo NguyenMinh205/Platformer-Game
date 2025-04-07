@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -60,7 +61,7 @@ public class GameManager : Singleton<GameManager>
 
     public void Win()
     {
-        AudioManager.Instance.PlaySoundClickButton();
+        AudioManager.Instance.PlaySoundWin();
         state = StateGame.Win;
         AudioManager.Instance.StopMusic();
         MapLevelManager.Instance.ListBtn[curLevel].IsLock = true;
@@ -186,12 +187,31 @@ public class GameManager : Singleton<GameManager>
     }
 
 
-    public void GameOver()
+    public void GameOver(GameObject player)
     {
-        Debug.Log("Player Die");
+        PlayerAnimation anim = player.GetComponent<PlayerController>()?.PlayerAnim;
+        if (anim != null)
+        {
+            anim.Animator.SetTrigger("IsHitting");
+        }
+
+        PlayerMovement movement = player.GetComponent<PlayerMovement>();
+        if (movement != null)
+        {
+            movement.enabled = false;
+        }
+
+        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = new Vector2(0, 8f);
+            rb.gravityScale = 2.5f;
+        }
+
+        AudioManager.Instance.PlaySoundFail();
         state = StateGame.Lose;
         AudioManager.Instance.StopMusic();
-        DOVirtual.DelayedCall(0.5f, () =>
+        DOVirtual.DelayedCall(1f, () =>
         {
             winLosePopup.DisplayPopupWinLose(true);
             winLosePopup.Title.text = "YOU LOSE";

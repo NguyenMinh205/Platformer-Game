@@ -33,18 +33,12 @@ public class AnimController : MonoBehaviour
     {
         yield return new WaitForEndOfFrame(); 
         flagAnim = GameObject.FindGameObjectWithTag("Win")?.GetComponent<Animator>();
-
-        if (flagAnim != null)
-            Debug.Log("yes");
-        else
-            Debug.Log("no");
     }
 
 
     public void StopPlaying(object param)
     {
         flagAnim = null;
-        Debug.Log("action");
     }    
 
     public void OnFruitCollected(GameObject fruit)

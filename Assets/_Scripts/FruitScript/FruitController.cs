@@ -8,6 +8,7 @@ public class FruitController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySFXGetItem();
             GameManager.Instance.AnimController.OnFruitCollected(this.gameObject);
             this.gameObject.SetActive(false);
             ObserverManager<GameEvent>.PostEvent(GameEvent.FruitCollected, this);

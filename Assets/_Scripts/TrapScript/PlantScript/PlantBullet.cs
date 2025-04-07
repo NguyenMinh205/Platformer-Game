@@ -29,6 +29,7 @@ public class PlantBullet : MonoBehaviour
         if (target.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player Die");
+            GameManager.Instance.GameOver(target);
         }
     }
 
