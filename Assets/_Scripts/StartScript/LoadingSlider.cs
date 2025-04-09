@@ -32,13 +32,14 @@ public class LoadingSlider : MonoBehaviour
 
     public void Play()
     {
-        //StartCoroutine(GameManager.Instance.DoSceneTransition(() =>
-        //{
-        //    SceneManager.LoadScene(1);
-        //    GameManager.Instance.State = StateGame.WaitingChoiceLevel;
-        //}));
-        SceneManager.LoadScene(1);
-        GameManager.Instance.State = StateGame.WaitingChoiceLevel;
+        StartCoroutine(GameManager.Instance.DoSceneTransition(() =>
+        {
+            AudioManager.Instance.PlaySoundClickButton();
+            SceneManager.LoadScene(1);
+            GameManager.Instance.State = StateGame.WaitingChoiceLevel;
+        }));
+        //SceneManager.LoadScene(1);
+        //GameManager.Instance.State = StateGame.WaitingChoiceLevel;
     }
 
     public void QuitGame()

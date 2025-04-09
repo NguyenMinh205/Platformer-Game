@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,14 +23,17 @@ public class PlayerController : MonoBehaviour
     [Header("Layer Mask")]
     [SerializeField] private LayerMask groundLayer;
 
+    private bool isDead = false;
+
     private void Update()
     {
-        if (GameManager.Instance.State != StateGame.Playing) return;
+        if (GameManager.Instance.State != StateGame.Playing || isDead) return;
+
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
-            if (isGrounded == true)
+            if (isGrounded)
             {
                 playerMovement.Jump(jumpForce);
                 canDoubleJump = true;
@@ -46,12 +50,14 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isDead) return;
+
         playerMovement.Move(horizontal, moveSpeed);
         playerAnim.PlayAnimRun(horizontal);
         playerAnim.PlayAnimJumpAndFall(playerMovement.Rb.velocity.y);
         isGrounded = CheckGround();
 
-        if (isGrounded == true)
+        if (isGrounded)
         {
             playerAnim.Animator.SetBool("IsGrounded", true);
             playerAnim.Animator.SetBool("DoubleJump", false);
@@ -60,6 +66,39 @@ public class PlayerController : MonoBehaviour
         {
             playerAnim.Animator.SetBool("IsGrounded", false);
         }
+    }
+
+    public void PlayerDie()
+    {
+        if (isDead) return;
+        isDead = true;
+
+        playerMovement.enabled = false;
+
+        if (playerAnim != null && playerAnim.Animator != null)
+        {
+            playerAnim.Animator.SetTrigger("IsHitting");
+        }
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Kinematic;
+        }
+
+        if (collider2D != null)
+        {
+            collider2D.enabled = false;
+        }
+
+        transform.DOMoveY(transform.position.y + 1.5f, 0.3f)
+                 .SetEase(Ease.OutQuad)
+                 .OnComplete(() =>
+                 {
+                     transform.DOMoveY(transform.position.y - 5f, 1f)
+                              .SetEase(Ease.InQuad);
+                 });
     }
 
     private bool CheckGround()

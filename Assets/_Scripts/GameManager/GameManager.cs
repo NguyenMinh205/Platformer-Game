@@ -32,30 +32,28 @@ public class GameManager : Singleton<GameManager>
         AudioManager.Instance.PlaySoundClickButton();
         if (level == 0) return;
 
-        //StartCoroutine(DoSceneTransition(() =>
-        //{
-        //    curLevel = level;
-        //    DisableSceneChoiceLevel(level);
-        //    state = StateGame.Playing;
-        //    AudioManager.Instance.StopMusic();
-
-        //    DOVirtual.DelayedCall(1f, delegate
-        //    {
-        //        AudioManager.Instance.PlayMusicInGame();
-        //    });
-
-        //    ObserverManager<GameEvent>.PostEvent(GameEvent.InPlaying);
-        //}));
-
-        curLevel = level;
-        DisableSceneChoiceLevel(level);
-        state = StateGame.Playing;
-        AudioManager.Instance.StopMusic();
-
-        DOVirtual.DelayedCall(1f, delegate
+        StartCoroutine(DoSceneTransition(() =>
         {
-            AudioManager.Instance.PlayMusicInGame();
-        });
+            curLevel = level;
+            DisableSceneChoiceLevel(level);
+            state = StateGame.Playing;
+            AudioManager.Instance.StopMusic();
+
+            DOVirtual.DelayedCall(1f, delegate
+            {
+                AudioManager.Instance.PlayMusicInGame();
+            });
+        }));
+
+        //curLevel = level;
+        //DisableSceneChoiceLevel(level);
+        //state = StateGame.Playing;
+        //AudioManager.Instance.StopMusic();
+
+        //DOVirtual.DelayedCall(1f, delegate
+        //{
+        //    AudioManager.Instance.PlayMusicInGame();
+        //});
     }
 
 
@@ -95,42 +93,42 @@ public class GameManager : Singleton<GameManager>
     {
         AudioManager.Instance.PlaySoundClickButton();
 
-        //StartCoroutine(DoSceneTransition(() =>
-        //{
-        //    if (state == StateGame.Win || state == StateGame.Lose)
-        //    {
-        //        winLosePopup.DisplayPopupWinLose(false);
-        //    }
-        //    else
-        //    {
-        //        settingPopup.DisplaySetting(false);
-        //    }
-        //    if (state == StateGame.WaitingChoiceLevel)
-        //    {
-        //        SceneManager.LoadScene(0);
-        //    }
-        //    else
-        //    {
-        //        EnableSceneChoiceLevel();
-        //    }
-        //}));
+        StartCoroutine(DoSceneTransition(() =>
+        {
+            if (state == StateGame.Win || state == StateGame.Lose)
+            {
+                winLosePopup.DisplayPopupWinLose(false);
+            }
+            else
+            {
+                settingPopup.DisplaySetting(false);
+            }
+            if (state == StateGame.WaitingChoiceLevel)
+            {
+                SceneManager.LoadScene(0);
+            }
+            else
+            {
+                EnableSceneChoiceLevel();
+            }
+        }));
 
-        if (state == StateGame.Win || state == StateGame.Lose)
-        {
-            winLosePopup.DisplayPopupWinLose(false);
-        }
-        else
-        {
-            settingPopup.DisplaySetting(false);
-        }
-        if (state == StateGame.WaitingChoiceLevel)
-        {
-            SceneManager.LoadScene(0);
-        }
-        else
-        {
-            EnableSceneChoiceLevel();
-        }
+        //if (state == StateGame.Win || state == StateGame.Lose)
+        //{
+        //    winLosePopup.DisplayPopupWinLose(false);
+        //}
+        //else
+        //{
+        //    settingPopup.DisplaySetting(false);
+        //}
+        //if (state == StateGame.WaitingChoiceLevel)
+        //{
+        //    SceneManager.LoadScene(0);
+        //}
+        //else
+        //{
+        //    EnableSceneChoiceLevel();
+        //}
     }
 
 
@@ -156,58 +154,40 @@ public class GameManager : Singleton<GameManager>
     {
         AudioManager.Instance.PlaySoundClickButton();
 
-        //StartCoroutine(DoSceneTransition(() =>
+        StartCoroutine(DoSceneTransition(() =>
+        {
+            curLevel++;
+            winLosePopup.DisplayPopupWinLose(false);
+            if (curLevel >= MapLevelManager.Instance.ListBtn.Count)
+            {
+                EnableSceneChoiceLevel();
+            }
+            else
+            {
+                spawnLevel.SpawnNewLevel(curLevel);
+                AudioManager.Instance.PlayMusicInGame();
+            }
+        }));
+
+        //curLevel++;
+        //winLosePopup.DisplayPopupWinLose(false);
+
+        //if (curLevel >= MapLevelManager.Instance.ListBtn.Count)
         //{
-        //    curLevel++;
-        //    winLosePopup.DisplayPopupWinLose(false);
-        //    if (curLevel >= MapLevelManager.Instance.ListBtn.Count)
-        //    {
-        //        EnableSceneChoiceLevel();
-        //    }
-        //    else
-        //    {
-        //        spawnLevel.SpawnNewLevel(curLevel);
-        //        AudioManager.Instance.PlayMusicInGame();
-        //    }
-        //}));
-
-        curLevel++;
-        winLosePopup.DisplayPopupWinLose(false);
-
-        if (curLevel >= MapLevelManager.Instance.ListBtn.Count)
-        {
-            EnableSceneChoiceLevel();
-        }
-        else
-        {
-            state = StateGame.Playing;
-            spawnLevel.SpawnNewLevel(curLevel);
-            AudioManager.Instance.PlayMusicInGame();
-        }
+        //    EnableSceneChoiceLevel();
+        //}
+        //else
+        //{
+        //    state = StateGame.Playing;
+        //    spawnLevel.SpawnNewLevel(curLevel);
+        //    AudioManager.Instance.PlayMusicInGame();
+        //}
     }
 
 
     public void GameOver(GameObject player)
     {
-        PlayerAnimation anim = player.GetComponent<PlayerController>()?.PlayerAnim;
-        if (anim != null)
-        {
-            anim.Animator.SetTrigger("IsHitting");
-        }
-
-        PlayerMovement movement = player.GetComponent<PlayerMovement>();
-        if (movement != null)
-        {
-            movement.enabled = false;
-        }
-
-        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            rb.velocity = new Vector2(0, 8f);
-            rb.gravityScale = 2.5f;
-        }
-
+        player.GetComponent<PlayerController>().PlayerDie();
         AudioManager.Instance.PlaySoundFail();
         state = StateGame.Lose;
         AudioManager.Instance.StopMusic();
@@ -221,14 +201,12 @@ public class GameManager : Singleton<GameManager>
     public IEnumerator DoSceneTransition(Action onMidAction)
     {
         SceneTransitionAnim.Instance.StartTransition();
-        SceneTransitionAnim.Instance.FadeInTransition();
         yield return new WaitForSeconds(1f);
 
         onMidAction?.Invoke();
 
         yield return new WaitForSeconds(0.2f);
 
-        SceneTransitionAnim.Instance.FadeOutTransition();
         SceneTransitionAnim.Instance.EndTransition();
     }
 

@@ -16,8 +16,6 @@ public class SpawnLevel : MonoBehaviour
             return;
         }
         StartCoroutine(Spawn(index));
-
-        ObserverManager<GameEvent>.PostEvent(GameEvent.StartPlaying);
     }
 
     private IEnumerator Spawn(int index)
@@ -25,6 +23,8 @@ public class SpawnLevel : MonoBehaviour
         DestroyMap();
         yield return new WaitForSeconds(0.1f);
         currentLevel = Instantiate(levels[index - 1], transform.position, Quaternion.identity, transform);
+        yield return new WaitForEndOfFrame();
+        ObserverManager<GameEvent>.PostEvent(GameEvent.StartPlaying);
     }
 
     public void DestroyMap()

@@ -9,26 +9,16 @@ public class SceneTransitionAnim : Singleton<SceneTransitionAnim>
     public virtual void Awake()
     {
         base.Awake();
-        KeepAlive(true);
-    }
-
-    public void FadeInTransition()
-    {
-        animTransition.SetTrigger("FadeInAnim");
-    }
-
-    public void FadeOutTransition()
-    {
-        animTransition.SetTrigger("FadeOutAnim");
+        KeepAlive(false);
     }
 
     public void StartTransition()
     {
-        this.gameObject.SetActive(true);
-    }  
-    
+        animTransition.SetTrigger("StartTransition");
+    }
+
     public void EndTransition()
     {
-        this.gameObject.SetActive(false);
-    }    
+        animTransition.SetTrigger("EndTransition");
+    }
 }
