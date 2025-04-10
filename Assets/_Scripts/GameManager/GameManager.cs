@@ -52,7 +52,11 @@ public class GameManager : Singleton<GameManager>
         AudioManager.Instance.PlaySoundWin();
         state = StateGame.Win;
         AudioManager.Instance.StopMusic();
-        MapLevelManager.Instance.ListBtn[curLevel].IsLock = true;
+
+        if (curLevel < MapLevelManager.Instance.ListBtn.Count)
+        {
+            MapLevelManager.Instance.ListBtn[curLevel].IsLock = true;
+        }
 
         DOVirtual.DelayedCall(0.5f, () =>
         {
@@ -134,7 +138,7 @@ public class GameManager : Singleton<GameManager>
         {
             curLevel++;
             winLosePopup.DisplayPopupWinLose(false);
-            if (curLevel >= MapLevelManager.Instance.ListBtn.Count)
+            if (curLevel > MapLevelManager.Instance.ListBtn.Count)
             {
                 EnableSceneChoiceLevel();
             }

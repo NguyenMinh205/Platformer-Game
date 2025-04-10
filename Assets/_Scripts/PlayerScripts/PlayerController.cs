@@ -84,11 +84,8 @@ public class PlayerController : MonoBehaviour
         if (rb != null)
         {
             rb.velocity = Vector2.zero;
+            rb.simulated = false;
             rb.bodyType = RigidbodyType2D.Kinematic;
-        }
-
-        if (collider2D != null)
-        {
             collider2D.enabled = false;
         }
 
@@ -100,7 +97,7 @@ public class PlayerController : MonoBehaviour
                               .SetEase(Ease.InQuad);
                  });
 
-        DOVirtual.DelayedCall(1f, () =>
+        DOVirtual.DelayedCall(2f, () =>
         {
             isDead = false;
         });

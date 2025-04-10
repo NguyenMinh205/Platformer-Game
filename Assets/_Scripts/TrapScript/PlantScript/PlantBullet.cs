@@ -21,6 +21,11 @@ public class PlantBullet : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = movement * speed;
+
+        if (GameManager.Instance.State != StateGame.Playing)
+        {
+            PoolingManager.Despawn(this.gameObject);
+        }
     }
 
     public void Hit(GameObject target)

@@ -22,6 +22,11 @@ public class PlantShooting : MonoBehaviour
     private IEnumerator StartShooting()
     {
         yield return new WaitForSeconds(timeStart);
+        if (GameManager.Instance.State != StateGame.Playing)
+        {
+            StopCoroutine(shootingCoroutine);
+            shootingCoroutine = null;
+        }
         while (true)
         {
             Debug.Log("Shoot");
