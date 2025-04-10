@@ -44,16 +44,6 @@ public class GameManager : Singleton<GameManager>
                 AudioManager.Instance.PlayMusicInGame();
             });
         }));
-
-        //curLevel = level;
-        //DisableSceneChoiceLevel(level);
-        //state = StateGame.Playing;
-        //AudioManager.Instance.StopMusic();
-
-        //DOVirtual.DelayedCall(1f, delegate
-        //{
-        //    AudioManager.Instance.PlayMusicInGame();
-        //});
     }
 
 
@@ -75,18 +65,21 @@ public class GameManager : Singleton<GameManager>
     {
         AudioManager.Instance.PlaySoundClickButton();
 
-        if (state == StateGame.Win || state == StateGame.Lose)
+        StartCoroutine(DoSceneTransition(() =>
         {
-            winLosePopup.DisplayPopupWinLose(false);
-        }
-        else
-        {
-            settingPopup.DisplaySetting(false);
-        }
+            if (state == StateGame.Win || state == StateGame.Lose)
+            {
+                winLosePopup.DisplayPopupWinLose(false);
+            }
+            else
+            {
+                settingPopup.DisplaySetting(false);
+            }
 
-        state = StateGame.Playing;
-        spawnLevel.SpawnNewLevel(curLevel);
-        AudioManager.Instance.PlayMusicInGame();
+            state = StateGame.Playing;
+            spawnLevel.SpawnNewLevel(curLevel);
+            AudioManager.Instance.PlayMusicInGame();
+        }));
     }
 
     public void BackHome()
@@ -112,23 +105,6 @@ public class GameManager : Singleton<GameManager>
                 EnableSceneChoiceLevel();
             }
         }));
-
-        //if (state == StateGame.Win || state == StateGame.Lose)
-        //{
-        //    winLosePopup.DisplayPopupWinLose(false);
-        //}
-        //else
-        //{
-        //    settingPopup.DisplaySetting(false);
-        //}
-        //if (state == StateGame.WaitingChoiceLevel)
-        //{
-        //    SceneManager.LoadScene(0);
-        //}
-        //else
-        //{
-        //    EnableSceneChoiceLevel();
-        //}
     }
 
 
@@ -168,20 +144,6 @@ public class GameManager : Singleton<GameManager>
                 AudioManager.Instance.PlayMusicInGame();
             }
         }));
-
-        //curLevel++;
-        //winLosePopup.DisplayPopupWinLose(false);
-
-        //if (curLevel >= MapLevelManager.Instance.ListBtn.Count)
-        //{
-        //    EnableSceneChoiceLevel();
-        //}
-        //else
-        //{
-        //    state = StateGame.Playing;
-        //    spawnLevel.SpawnNewLevel(curLevel);
-        //    AudioManager.Instance.PlayMusicInGame();
-        //}
     }
 
 

@@ -25,6 +25,7 @@ public class SpawnLevel : MonoBehaviour
         currentLevel = Instantiate(levels[index - 1], transform.position, Quaternion.identity, transform);
         yield return new WaitForEndOfFrame();
         ObserverManager<GameEvent>.PostEvent(GameEvent.StartPlaying);
+        GameManager.Instance.State = StateGame.Playing;
     }
 
     public void DestroyMap()

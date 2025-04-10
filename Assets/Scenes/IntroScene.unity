@@ -946,7 +946,7 @@ MonoBehaviour:
   panelLoading: {fileID: 1314596879}
   popUpStartGame: {fileID: 1443720216}
   slider: {fileID: 1314596881}
-  duration: 5
+  duration: 3.5
 --- !u!210 &494966999
 SortingGroup:
   m_ObjectHideFlags: 0

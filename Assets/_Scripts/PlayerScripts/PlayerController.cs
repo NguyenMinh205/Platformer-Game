@@ -99,6 +99,11 @@ public class PlayerController : MonoBehaviour
                      transform.DOMoveY(transform.position.y - 5f, 1f)
                               .SetEase(Ease.InQuad);
                  });
+
+        DOVirtual.DelayedCall(1f, () =>
+        {
+            isDead = false;
+        });
     }
 
     private bool CheckGround()

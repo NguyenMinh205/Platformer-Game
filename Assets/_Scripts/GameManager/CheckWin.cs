@@ -24,7 +24,7 @@ public class CheckWin : MonoBehaviour
     
     public void SetWinFalse(object param)
     {
-        canWin = true;
+        canWin = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
