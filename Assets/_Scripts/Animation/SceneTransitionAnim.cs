@@ -5,6 +5,8 @@ using UnityEngine;
 public class SceneTransitionAnim : Singleton<SceneTransitionAnim>
 {
     [SerializeField] private Animator animTransition;
+    [SerializeField] private string startTransitionTriggerName = "StartTransition";
+    [SerializeField] private string endTransitionTriggerName = "EndTransition";
 
     public virtual void Awake()
     {
@@ -14,11 +16,11 @@ public class SceneTransitionAnim : Singleton<SceneTransitionAnim>
 
     public void StartTransition()
     {
-        animTransition.SetTrigger("StartTransition");
+        animTransition.SetTrigger(startTransitionTriggerName);
     }
 
     public void EndTransition()
     {
-        animTransition.SetTrigger("EndTransition");
+        animTransition.SetTrigger(endTransitionTriggerName);
     }
 }

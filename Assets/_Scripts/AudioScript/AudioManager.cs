@@ -21,7 +21,6 @@ public class AudioManager : Singleton<AudioManager>
 
     [Space]
     [Header("Audio in GamePlay")]
-    [SerializeField] private AudioClip playerFall;
     [SerializeField] private AudioClip playerJump;
     [SerializeField] private AudioClip playerMoving;
     [SerializeField] private AudioClip playerGetItem;
@@ -131,11 +130,6 @@ public class AudioManager : Singleton<AudioManager>
     public void PlaySFXJump()
     {
         PlaySFX(playerJump);
-    }    
-
-    public void PlaySFXFall()
-    {
-        PlaySFX(playerFall);
     }    
 
     public void PlaySFXGetItem()
