@@ -10,7 +10,6 @@ public class SawController : MonoBehaviour
     [SerializeField] private float timeDelay;
     [SerializeField] private Rigidbody2D rb;
     private Sequence moveSequence;
-    private int curIndex = 0;
     private Coroutine moveCoroutine;
 
     private void Start()

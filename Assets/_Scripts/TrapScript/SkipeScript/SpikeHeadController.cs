@@ -9,7 +9,8 @@ public class SpikeHeadController : MonoBehaviour
     [SerializeField] private float stopTime; 
     [SerializeField] private LayerMask groundLayer; 
     [SerializeField] private Vector2 moveDir;
-    
+    [SerializeField] private Animator anim;
+
     private bool isMoving = true;
     private Rigidbody2D rb;
 
@@ -65,8 +66,10 @@ public class SpikeHeadController : MonoBehaviour
     private IEnumerator ChangeDirectionAfterDelay()
     {
         isMoving = false;
+        anim.SetTrigger("Hit");
         yield return new WaitForSeconds(stopTime);
-        moveDir *= -1; 
+        moveDir *= -1;
+        anim.SetTrigger("Hit");
         isMoving = true; 
     }
 

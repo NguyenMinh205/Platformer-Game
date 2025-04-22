@@ -31,7 +31,7 @@ public class PlantShooting : MonoBehaviour
         {
             Debug.Log("Shoot");
             animator.SetTrigger("Shoot");
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(0.5f);
             PlantBullet newBullet = PoolingManager.Spawn<PlantBullet>(bulletPrefab, this.transform.position + new Vector3(0.3f, 0.3f, 0), Quaternion.identity);
             newBullet.Init(Vector2.left);
             animator.SetTrigger("Shoot");

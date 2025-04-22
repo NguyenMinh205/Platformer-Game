@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 83aa86033f8852e49bf84a0ac22b256c
+guid: a7f39e1e0e59a5f4badc1ecee4b6c2d6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bottom Hit (54x52)_0
+      name: A-Key_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 54
-        height: 52
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef7aa39f1d283ab4ab1537f6b323621b
-      internalID: 514559366
+      spriteID: 247343ba283de1e46bc0d434f4e4bdef
+      internalID: 1937089209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bottom Hit (54x52)_1
+      name: A-Key_1
       rect:
         serializedVersion: 2
-        x: 54
+        x: 32
         y: 0
-        width: 54
-        height: 52
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,50 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34eff1e0e5daa93408ad38370c008400
-      internalID: -1888817055
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bottom Hit (54x52)_2
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 0
-        width: 54
-        height: 52
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 43168c7b2e259ce41af11dde4aabb8c2
-      internalID: 1232577095
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bottom Hit (54x52)_3
-      rect:
-        serializedVersion: 2
-        x: 162
-        y: 0
-        width: 54
-        height: 52
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4ebd8dc97f2293b4da4602d7986b5c11
-      internalID: -1551942997
+      spriteID: f3606ced6c6d15742a91369ce6b92b53
+      internalID: -464734887
       vertices: []
       indices: 
       edges: []
@@ -217,10 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bottom Hit (54x52)_0: 514559366
-      Bottom Hit (54x52)_1: -1888817055
-      Bottom Hit (54x52)_2: 1232577095
-      Bottom Hit (54x52)_3: -1551942997
+      A-Key_0: 1937089209
+      A-Key_1: -464734887
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

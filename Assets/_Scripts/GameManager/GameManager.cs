@@ -12,6 +12,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject sceneChoiceLevel;
     [SerializeField] private UIWinLose winLosePopup;
     [SerializeField] private UISetting settingPopup;
+    [SerializeField] private MessageTutorial messageTutorialUI;
     public AnimController AnimController => animController;
 
     private StateGame state = StateGame.WaitingChoiceLevel;
@@ -26,6 +27,12 @@ public class GameManager : Singleton<GameManager>
     public SpawnLevel SpawnLevel => spawnLevel;
 
     private int curLevel = 1;
+    private bool isFirstPlay = true;
+    public bool IsFirstPlay
+    {
+        get => isFirstPlay;
+        set => isFirstPlay = value;
+    }
 
     public void PlayGame(int level)
     {
@@ -36,12 +43,15 @@ public class GameManager : Singleton<GameManager>
         {
             curLevel = level;
             DisableSceneChoiceLevel(level);
-            state = StateGame.Playing;
             AudioManager.Instance.StopMusic();
 
             DOVirtual.DelayedCall(1f, delegate
             {
                 AudioManager.Instance.PlayMusicInGame();
+                if (level == 1)
+                {
+                    messageTutorialUI.ShowDisplayDialog();
+                }
             });
         }));
     }

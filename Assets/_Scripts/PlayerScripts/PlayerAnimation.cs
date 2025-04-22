@@ -15,7 +15,7 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
     }
 
-    public void PlayAnimJumpAndFall(float yVelocity)
+    public void PlayAnimJump(float yVelocity)
     {
         animator.SetFloat("yVelocity", yVelocity);
     }

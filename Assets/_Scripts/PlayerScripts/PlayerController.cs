@@ -1,10 +1,11 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     [Header("Movement Settings")]
     [SerializeField] private PlayerMovement playerMovement;
+    public PlayerMovement PlayerMove => playerMovement;
     [SerializeField] private Collider2D collider2D;
     [SerializeField] private float moveSpeed, jumpForce, extraHeight;
 
@@ -34,7 +35,6 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        // Resume once after unpausing
         if (wasPaused)
         {
             playerMovement.ResumeControl();
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
         playerMovement.Move(horizontal, moveSpeed);
         playerAnim.PlayAnimRun(horizontal);
-        playerAnim.PlayAnimJumpAndFall(playerMovement.Rb.velocity.y);
+        playerAnim.PlayAnimJump(playerMovement.Rb.velocity.y);
 
         UpdateGroundState();
     }
