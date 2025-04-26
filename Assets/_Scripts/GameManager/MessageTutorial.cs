@@ -36,7 +36,8 @@ public class MessageTutorial : MonoBehaviour
         "Press A to move left.",
         "Press D to move right.",
         "Press W or Space to jump.",
-        "Press W or Space twice to perform a double jump."
+        "Press W or Space twice to perform a double jump.",
+        "Collect all the fruits to be able to start the flag to the finish line!"
     };
 
     [TextArea(2, 3)]
@@ -49,7 +50,8 @@ public class MessageTutorial : MonoBehaviour
         "Hãy nhấn phím A để di chuyển sang trái.",
         "Hãy nhấn phím D để di chuyển sang phải.",
         "Nhấn W hoặc Space để nhảy.",
-        "Nhấn W hoặc Space hai lần để thực hiện cú nhảy kép (Double Jump)."
+        "Nhấn W hoặc Space hai lần để thực hiện cú nhảy kép (Double Jump).",
+        "Hãy thu thập hết các loại quả để có thể khởi động cờ về đích nhé!"
     };
 
     private string[] currentMessage;
