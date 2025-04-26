@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
         if (rb != null)
         {
             rb.velocity = Vector2.zero;
-            if (rb.bodyType != RigidbodyType2D.Kinematic && GameManager.Instance.State == StateGame.Pause)
+            if (rb.bodyType != RigidbodyType2D.Kinematic && (GameManager.Instance.State == StateGame.Pause))
                 rb.bodyType = RigidbodyType2D.Kinematic;
         }
     }

@@ -255,26 +255,29 @@ MonoBehaviour:
   messagesEnglish:
   - My food supplies are almost gone, and winter is closing in.
   - "If I don't collect those fruits in time, I won\u2019t survive the cold season."
-  - "Ah, hello there\u2026 the one watching me from the screen!"
-  - Can you help me gather some fruits to prepare for the winter?
+  - "Ah, hello there\u2026 the one watching me from the screen! Can you help me gather
+    some fruits to prepare for the winter?"
   - Press A to move left.
   - Press D to move right.
   - Press W or Space to jump.
   - Press W or Space twice to perform a double jump.
+  - Collect all the fruits to be able to start the flag to the finish line!
   messagesVietnamese:
   - "Kho th\u1EE9c \u0103n c\u1EE7a t\xF4i g\u1EA7n nh\u01B0 c\u1EA1n ki\u1EC7t,
     trong khi m\xF9a \u0111\xF4ng \u0111ang \u0111\u1EBFn g\u1EA7n."
   - "N\u1EBFu kh\xF4ng k\u1ECBp thu th\u1EADp nh\u1EEFng lo\u1EA1i tr\xE1i c\xE2y
     kia, t\xF4i s\u1EBD ch\u1EB3ng c\xF2n g\xEC \u0111\u1EC3 s\u1ED1ng s\xF3t qua
     m\xF9a \u0111\xF4ng."
-  - "A, xin ch\xE0o... ng\u01B0\u1EDDi \u0111ang nh\xECn v\xE0o m\xE0n h\xECnh!"
-  - "B\u1EA1n c\xF3 th\u1EC3 gi\xFAp t\xF4i thu th\u1EADp tr\xE1i c\xE2y \u0111\u1EC3
-    d\u1EF1 tr\u1EEF qua m\xF9a \u0111\xF4ng kh\xF4ng?"
+  - "A, xin ch\xE0o... ng\u01B0\u1EDDi \u0111ang nh\xECn v\xE0o m\xE0n h\xECnh! B\u1EA1n
+    c\xF3 th\u1EC3 gi\xFAp t\xF4i thu th\u1EADp tr\xE1i c\xE2y \u0111\u1EC3 d\u1EF1
+    tr\u1EEF qua m\xF9a \u0111\xF4ng kh\xF4ng?"
   - "H\xE3y nh\u1EA5n ph\xEDm A \u0111\u1EC3 di chuy\u1EC3n sang tr\xE1i."
   - "H\xE3y nh\u1EA5n ph\xEDm D \u0111\u1EC3 di chuy\u1EC3n sang ph\u1EA3i."
   - "Nh\u1EA5n W ho\u1EB7c Space \u0111\u1EC3 nh\u1EA3y."
   - "Nh\u1EA5n W ho\u1EB7c Space hai l\u1EA7n \u0111\u1EC3 th\u1EF1c hi\u1EC7n c\xFA
     nh\u1EA3y k\xE9p (Double Jump)."
+  - "H\xE3y thu th\u1EADp h\u1EBFt c\xE1c lo\u1EA1i qu\u1EA3 \u0111\u1EC3 c\xF3 th\u1EC3
+    kh\u1EDFi \u0111\u1ED9ng c\u1EDD v\u1EC1 \u0111\xEDch nh\xE9!"
 --- !u!1 &94195792
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,6 +2048,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2048645791}
     m_Modifications:
+    - target: {fileID: 571538489576692612, guid: 56edc405d5b87654ebb34af8b6b19181, type: 3}
+      propertyPath: collider2D
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 607833391257307556, guid: 56edc405d5b87654ebb34af8b6b19181, type: 3}
       propertyPath: m_Name
       value: PlayerModel
@@ -2075,7 +2082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3555305149108597625, guid: 56edc405d5b87654ebb34af8b6b19181, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3555305149108597625, guid: 56edc405d5b87654ebb34af8b6b19181, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2113,7 +2120,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5122182130385440615, guid: 56edc405d5b87654ebb34af8b6b19181, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1723795660717353338, guid: 56edc405d5b87654ebb34af8b6b19181, type: 3}
+    - {fileID: 5664948871186105865, guid: 56edc405d5b87654ebb34af8b6b19181, type: 3}
+    - {fileID: 571538489576692612, guid: 56edc405d5b87654ebb34af8b6b19181, type: 3}
+    - {fileID: 5122182130385440615, guid: 56edc405d5b87654ebb34af8b6b19181, type: 3}
+    - {fileID: 2881988756630285377, guid: 56edc405d5b87654ebb34af8b6b19181, type: 3}
+    - {fileID: 6903357172513168172, guid: 56edc405d5b87654ebb34af8b6b19181, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -4296,6 +4313,119 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7297911041134178122, guid: 3dd9deaff47da334282d4ae964493ac7, type: 3}
   m_PrefabInstance: {fileID: 900909744}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &946037242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 946037243}
+  - component: {fileID: 946037247}
+  - component: {fileID: 946037246}
+  - component: {fileID: 946037245}
+  - component: {fileID: 946037244}
+  m_Layer: 5
+  m_Name: Dime
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &946037243
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946037242}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0001063, y: 1.0001063, z: 1.0001063}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2078908772}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 315.22363}
+  m_SizeDelta: {x: 920, y: 680.44727}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &946037244
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946037242}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &946037245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946037242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d8591bfdb72374b984295ad2198fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appearDelay: 0
+  duration: 0.5
+  closeDuration: 0.5
+  fading: 1
+  anims: []
+  canvasGroup: {fileID: 946037244}
+  onStartEvt:
+    m_PersistentCalls:
+      m_Calls: []
+  onFinishEvt:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &946037246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946037242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &946037247
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946037242}
+  m_CullTransparentMesh: 1
 --- !u!1 &1007770864
 GameObject:
   m_ObjectHideFlags: 0
@@ -5127,8 +5257,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10, y: -35}
-  m_SizeDelta: {x: -120, y: 220}
+  m_AnchoredPosition: {x: -4, y: -35}
+  m_SizeDelta: {x: -108.000015, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1208072435
 MonoBehaviour:
@@ -8698,7 +8828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2078908772
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8711,6 +8841,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 946037243}
   - {fileID: 1207897568}
   m_Father: {fileID: 459362218}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

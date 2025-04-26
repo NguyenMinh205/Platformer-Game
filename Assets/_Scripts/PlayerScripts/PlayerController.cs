@@ -27,10 +27,17 @@ public class PlayerController : Singleton<PlayerController>
         if (!IsPlaying())
         {
             horizontal = 0;
-            if (!wasPaused)
+            if (!wasPaused && GameManager.Instance.State != StateGame.Win)
             {
                 playerMovement.IsStanding();
                 wasPaused = true;
+            }
+            else if (GameManager.Instance.State == StateGame.Win)
+            {
+                //playerMovement.IsStanding();
+                playerAnim.PlayAnimRun(0);
+                playerAnim.PlayAnimJump(0);
+                playerAnim.Animator.SetBool("DoubleJump", false);
             }
             return;
         }
@@ -47,13 +54,12 @@ public class PlayerController : Singleton<PlayerController>
 
     private void FixedUpdate()
     {
+        UpdateGroundState();
         if (!IsPlaying()) return;
 
         playerMovement.Move(horizontal, moveSpeed);
         playerAnim.PlayAnimRun(horizontal);
         playerAnim.PlayAnimJump(playerMovement.Rb.velocity.y);
-
-        UpdateGroundState();
     }
 
     private void HandleInput()
@@ -121,10 +127,10 @@ public class PlayerController : Singleton<PlayerController>
                               .SetEase(Ease.InQuad);
                  });
 
-        DOVirtual.DelayedCall(5f, () =>
+        DOVirtual.DelayedCall(2f, () =>
         {
             isDead = false;
-            playerMovement.enabled = true;
+            //playerMovement.enabled = true;
         });
     }
 

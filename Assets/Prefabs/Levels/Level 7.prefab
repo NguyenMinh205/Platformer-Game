@@ -1245,7 +1245,7 @@ Transform:
   m_GameObject: {fileID: 2413780627887789411}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.15, y: -1.5, z: 0}
+  m_LocalPosition: {x: 15.15, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2546,6 +2546,26 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: -3, y: -1, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 5
+      m_TileSpriteIndex: 5
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: -2, y: -1, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 5
+      m_TileSpriteIndex: 5
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 1, y: 2, z: 0}
     second:
       serializedVersion: 2
@@ -2838,7 +2858,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 4b091e0987abce74fa1ed97c38c79f49, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: f253cc90601d5c64989f6482650a660e, type: 2}
-  - m_RefCount: 9
+  - m_RefCount: 11
     m_Data: {fileID: 11400000, guid: 55de6c359727ce542a0d682685a2484c, type: 2}
   - m_RefCount: 16
     m_Data: {fileID: 11400000, guid: f1e64c8b42169cc4a9ae4cae40471b3a, type: 2}
@@ -2897,7 +2917,7 @@ Tilemap:
     m_Data: {fileID: 1348073427, guid: f53f9fce634d0454db212aa77cda3c83, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 706343517, guid: f53f9fce634d0454db212aa77cda3c83, type: 3}
-  - m_RefCount: 9
+  - m_RefCount: 11
     m_Data: {fileID: -2113099713, guid: 7d8ccc7ba51b123448447a6ea97eaaff, type: 3}
   - m_RefCount: 16
     m_Data: {fileID: 1961437524, guid: f53f9fce634d0454db212aa77cda3c83, type: 3}
@@ -2946,7 +2966,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 5980082445317115622, guid: e0d67254cd9a31f47bfd9921ceb67c68, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 153
+  - m_RefCount: 155
     m_Data:
       e00: 1
       e01: 0
@@ -2965,7 +2985,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 153
+  - m_RefCount: 155
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -3168,6 +3188,14 @@ CompositeCollider2D:
         Y: -20000000
       - X: 70000000
         Y: -10000000
+      - X: -10000000
+        Y: -10000000
+      - X: -10000000
+        Y: 0
+      - X: -30000000
+        Y: 0
+      - X: -30000000
+        Y: -10000000
       - X: -170000000
         Y: -10000000
       - X: -170000000
@@ -3264,6 +3292,10 @@ CompositeCollider2D:
       - {x: 3.0000293, y: -2}
       - {x: 7, y: -1.9999708}
       - {x: 6.9999704, y: -1}
+      - {x: -1, y: -0.9999706}
+      - {x: -1.0000293, y: 0}
+      - {x: -3, y: -0.000029300001}
+      - {x: -3.0000293, y: -1}
       - {x: -17, y: -1.0000293}
       - {x: -16.999971, y: -2}
       - {x: -7, y: -2.0000293}
@@ -3699,7 +3731,7 @@ Transform:
   m_GameObject: {fileID: 8171827339256407320}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.2, y: -1.5, z: 0}
+  m_LocalPosition: {x: 8.2, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4117,17 +4149,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 5426039185981791544}
     m_Modifications:
     - target: {fileID: 2407355658444949595, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 6641764206630768298}
+    - target: {fileID: 2407355658444949595, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
       propertyPath: waypoints.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2407355658444949595, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
-      objectReference: {fileID: 2083900007463296562}
+      objectReference: {fileID: 6656219051581120321}
     - target: {fileID: 2407355658444949595, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
       propertyPath: waypoints.Array.data[1]
       value: 
-      objectReference: {fileID: 6656219051581120321}
+      objectReference: {fileID: 2083900007463296562}
     - target: {fileID: 6456425528364460637, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
       propertyPath: m_Name
       value: Saw (1)
@@ -4180,6 +4216,11 @@ PrefabInstance:
 --- !u!4 &6204185055343673703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6580091294477620623, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
+  m_PrefabInstance: {fileID: 957190038116275432}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &6641764206630768298 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 5865048045897849410, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
   m_PrefabInstance: {fileID: 957190038116275432}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1061270591733391736
@@ -4265,8 +4306,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 5426039185981791544}
     m_Modifications:
     - target: {fileID: 2407355658444949595, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 4944222828150449363}
+    - target: {fileID: 2407355658444949595, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407355658444949595, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
       propertyPath: timeDelay
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2407355658444949595, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
       propertyPath: waypoints.Array.size
@@ -4275,11 +4324,11 @@ PrefabInstance:
     - target: {fileID: 2407355658444949595, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
-      objectReference: {fileID: 7845003673096132245}
+      objectReference: {fileID: 8936635435588402758}
     - target: {fileID: 2407355658444949595, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
       propertyPath: waypoints.Array.data[1]
       value: 
-      objectReference: {fileID: 8936635435588402758}
+      objectReference: {fileID: 7845003673096132245}
     - target: {fileID: 6456425528364460637, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
       propertyPath: m_Name
       value: Saw
@@ -4290,7 +4339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6580091294477620623, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6580091294477620623, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4329,6 +4378,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
+--- !u!50 &4944222828150449363 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 5865048045897849410, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
+  m_PrefabInstance: {fileID: 1583506101710618257}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5667938750645496606 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6580091294477620623, guid: 3677cf35ab816644fb74b13845f9acd6, type: 3}
@@ -5836,6 +5890,10 @@ PrefabInstance:
       propertyPath: timeDelay
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5435100421899613632, guid: 030c83a5a5199e8498e59e61edd1ddd1, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 7819394833156966852, guid: bd39a0fb41709fe45856cad2096fa0a7, type: 3}
     - target: {fileID: 7245058628827594131, guid: 030c83a5a5199e8498e59e61edd1ddd1, type: 3}
       propertyPath: m_Name
       value: PlantShooting
